@@ -285,6 +285,25 @@ def setGui():
     setLabels(labels)
     
     #add labels to window
+    initLabels(root, lbl00txt, lbl01txt, lbl02txt, lbl03txt, lbl10txt, lbl11txt, lbl12txt, lbl13txt, lbl20txt, lbl21txt, lbl22txt, lbl23txt, lbl30txt, lbl31txt, lbl32txt, lbl33txt)
+    
+    #set input buttons
+    initButtons(root, labels)
+    
+    #start gui
+    root.mainloop()
+
+def initButtons(root, labels):
+    buttonLeft= ttk.Button(root, text= "Left", command= lambda: [mergeLeft(),addTwo(root),setLabels(labels)])
+    buttonLeft.grid(row=4, column=0,sticky='nswe')
+    buttonRight= ttk.Button(root, text= "Right", command= lambda: [mergeRight(),addTwo(root),setLabels(labels)])
+    buttonRight.grid(row=4, column=1,sticky='nswe')
+    buttonUp= ttk.Button(root, text= "Up", command= lambda: [mergeUp(),addTwo(root),setLabels(labels)])
+    buttonUp.grid(row=4, column=2,sticky='nswe')
+    buttonDown= ttk.Button(root, text= "Down", command= lambda: [mergeDown(),addTwo(root),setLabels(labels)])
+    buttonDown.grid(row=4, column=3,sticky='nswe')
+
+def initLabels(root, lbl00txt, lbl01txt, lbl02txt, lbl03txt, lbl10txt, lbl11txt, lbl12txt, lbl13txt, lbl20txt, lbl21txt, lbl22txt, lbl23txt, lbl30txt, lbl31txt, lbl32txt, lbl33txt):
     lbl00=ttk.Label(root, textvariable = lbl00txt, background="red",font ="Impact 25")
     lbl00.configure(anchor="center")
     lbl00.grid(row=0,column=0, sticky='nsew')
@@ -333,19 +352,6 @@ def setGui():
     lbl33=ttk.Label(root, textvariable = lbl33txt, background="red",font ="Impact 25")
     lbl33.configure(anchor="center")
     lbl33.grid(row=3, column=3, sticky='nsew')
-    
-    #set input buttons
-    buttonLeft= ttk.Button(root, text= "Left", command= lambda: [mergeLeft(),addTwo(root),setLabels(labels)])
-    buttonLeft.grid(row=4, column=0,sticky='nswe')
-    buttonRight= ttk.Button(root, text= "Right", command= lambda: [mergeRight(),addTwo(root),setLabels(labels)])
-    buttonRight.grid(row=4, column=1,sticky='nswe')
-    buttonUp= ttk.Button(root, text= "Up", command= lambda: [mergeUp(),addTwo(root),setLabels(labels)])
-    buttonUp.grid(row=4, column=2,sticky='nswe')
-    buttonDown= ttk.Button(root, text= "Down", command= lambda: [mergeDown(),addTwo(root),setLabels(labels)])
-    buttonDown.grid(row=4, column=3,sticky='nswe')
-    
-    #start gui
-    root.mainloop()
 #update the variable label text to reflect current table state
 def setLabels(labels):
     for i in range(4):
